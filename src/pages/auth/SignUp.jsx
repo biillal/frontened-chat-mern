@@ -21,7 +21,7 @@ function SignUp() {
         formData.append('password', password)
         formData.append('passwordConfirm', passwordConfirm)
         formData.append('image', image)
-
+        console.log({ username, email, password, passwordConfirm });
         dispatch(registerUser({ username, email, password, passwordConfirm }))
     }
     return (
