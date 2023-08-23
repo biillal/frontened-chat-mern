@@ -3,8 +3,6 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import './App.css'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './pages/home/Home'
-import Login from './pages/auth/Login'
-import SignUp from './pages/auth/SignUp'
 import ChatePage from './pages/home/ChatePage'
 function App() {
 
@@ -15,7 +13,7 @@ function App() {
         <Routes>
           <Route index element={<Home/>}/>
                  
-          <Route path='/chatPagea' element={<ChatePage/>}/>                 
+          <Route path='/chatPage' element={<ChatePage/>}/>                 
         </Routes>
         </BrowserRouter>
       </div>
