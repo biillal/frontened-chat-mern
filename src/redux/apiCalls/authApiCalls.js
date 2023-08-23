@@ -14,7 +14,7 @@ export function registerUser(user){
              console.log(data,'dada');
              dispatch(authActions.register(data.message))
         } catch (error) {
-            console.log(error.response.data.msg)
+            console.log(error.response)
         }
     } 
 }
