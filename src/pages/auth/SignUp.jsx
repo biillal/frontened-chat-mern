@@ -1,5 +1,7 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { registerUser } from '../../redux/apiCalls/authApiCalls'
 
 function SignUp() {
     const [show, setShow] = useState(false)
@@ -9,6 +11,7 @@ function SignUp() {
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [image, setImage] = useState(null)
     const [phone, setPhone] = useState('')
+    const dispatch = useDispatch()
 
     const handleClick = () => { setShow(!show) }
     const handlerSubmit = () => {
@@ -18,7 +21,8 @@ function SignUp() {
         formData.append('password', password)
         formData.append('passwordConfirm', passwordConfirm)
         formData.append('image', image)
-        console.log(formData);
+
+        dispatch(registerUser({ username, email, password, passwordConfirm }))
     }
     return (
         <VStack spacing={3} >
