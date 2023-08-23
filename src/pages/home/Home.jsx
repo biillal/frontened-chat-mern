@@ -2,12 +2,11 @@ import { Box, Container, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra
 import React from 'react'
 import Login from '../auth/Login'
 import SignUp from '../auth/SignUp'
-import { Link } from 'react-router-dom'
 
 function Home() {
   return (
     <Container>
-      <Link to='/chatPage' className='flex justify-center bg-white mt-[15px] p-3 font-bold font-body rounded-lg fon'>TALK-A-TIVE</Link>
+      <div className='flex justify-center bg-white mt-[15px] p-3 font-bold font-body rounded-lg fon'>TALK-A-TIVE</div>
       <Box
         bg="white" w='100%' m='16px 0 0 0 ' p='2'
         borderRadius="lg" borderWidth='1px'
