@@ -26,7 +26,7 @@ export function logoutUser(){
 export function registerUser(user){
     return async (dispatch,getState) =>{
         try {
-             const {data} = await axios.post("https://backend-chat-7n01.onrender.com/api/v1/auth/signup",user)
+             const {data} = await axios.post("http://localhost:5000/api/v1/auth/signup",user)
              dispatch(authActions.register(data.message))
         } catch (error) {
             toast.error(error.response.data.message)
