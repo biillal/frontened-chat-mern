@@ -17,8 +17,10 @@ export function registerUser(user){
             })
              console.log(data,'dada');
              alert(data.message)
+             
              dispatch(authActions.register(data))
              localStorage.setItem('userChat',JSON.stringify(data));
+             
         } catch (error) {
             alert(error.response.data.errors[0].msg)
         }

@@ -26,10 +26,12 @@ function SignUp() {
         formData.append('image', image)
         console.log({ username, email, password, passwordConfirm });
         dispatch(registerUser(formData))
-        if (isverified === true) {
-            return navigate('/chatPage')
-        }
+
     }
+    if (isverified === true) {
+        return navigate('/chatPage')
+    }
+    
     return (
         <VStack spacing={3} >
             <FormControl isRequired color="black">

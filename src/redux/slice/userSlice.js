@@ -14,8 +14,9 @@ const authSlice = createSlice({
             state.user = action.payload
         },
         register(state, action) {
+            state.isverified = true 
             state.user = action.payload
-            state.isverified = true  
+             
         } 
         
 
