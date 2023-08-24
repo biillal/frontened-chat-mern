@@ -25,13 +25,13 @@ function SignUp() {
         formData.append('passwordConfirm', passwordConfirm)
         formData.append('image', image)
         console.log({ username, email, password, passwordConfirm });
-        dispatch(registerUser(formData))
+        dispatch(registerUser({username,email,password,passwordConfirm}))
 
     }
     if (isverified === true) {
         return navigate('/chatPage')
     }
-    
+
     return (
         <VStack spacing={3} >
             <FormControl isRequired color="black">
@@ -80,15 +80,7 @@ function SignUp() {
                     </InputRightElement>
                 </InputGroup>
             </FormControl>
-            <FormControl  >
-                <FormLabel>Upload your picture</FormLabel>
-                <Input
-                    name='image'
-                    type='file'
-                    p={1.5}
-                    accept='image/*'
-                    onChange={(e) => setImage(e.target.files[0])} />
-            </FormControl>
+
             <Button
                 onClick={handlerSubmit}
                 colorScheme='blue'
