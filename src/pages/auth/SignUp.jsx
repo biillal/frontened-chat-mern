@@ -1,8 +1,7 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../../redux/apiCalls/authApiCalls'
-
 function SignUp() {
     const [show, setShow] = useState(false)
     const [username, setUsername] = useState('')
@@ -12,8 +11,10 @@ function SignUp() {
     const [image, setImage] = useState(null)
     const [phone, setPhone] = useState('')
     const dispatch = useDispatch()
-
+    const { isverified } = useSelector((state) => state.auth)
+    const navigate = useNavigate()
     const handleClick = () => { setShow(!show) }
+    console.log(isverified);
     const handlerSubmit = () => {
         const formData = new FormData()
         formData.append('username', username)
@@ -23,9 +24,12 @@ function SignUp() {
         formData.append('image', image)
         console.log({ username, email, password, passwordConfirm });
         dispatch(registerUser(formData))
+        if (isverified === true) {
+            navigate('/chatPage')
+        }
     }
     return (
-        <VStack spacing={3} >
+        <VStack spacing={3}>
             <FormControl isRequired color="black">
                 <FormLabel>User name</FormLabel>
                 <Input
@@ -40,7 +44,7 @@ function SignUp() {
                     name='email'
                     type='email'
                     placeholder='Jois@gmail.com'
-                    onChange={(e) =>setEmail(e.target.value)} />
+                    onChange={(e) => setEmail(e.target.value)} />
             </FormControl>
             <FormControl isRequired color="black">
                 <FormLabel>passwored</FormLabel>
@@ -82,11 +86,10 @@ function SignUp() {
                     onChange={(e) => setImage(e.target.files[0])} />
             </FormControl>
             <Button
-                onClick={handlerSubmit}
                 colorScheme='blue'
                 width="100%"
                 mt='10px'
-
+                onClick={handlerSubmit}
             >
                 Sign Up
             </Button>

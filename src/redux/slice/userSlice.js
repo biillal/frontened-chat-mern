@@ -5,6 +5,7 @@ const authSlice = createSlice({
     initialState:{
         user:localStorage.getItem("userChat") ? JSON.parse(localStorage.getItem("userChat")) : null,
         registerMessage:null,
+        isverified:false,
         isEmailVerified:false
     },
     reducers:{
@@ -13,6 +14,7 @@ const authSlice = createSlice({
         },
         register(state,action){
             state.user = action.payload
+            state.isverified = true
         },createSlice
        
     }
