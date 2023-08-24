@@ -15,6 +15,7 @@ function SignUp() {
     const dispatch = useDispatch()
     const { isverified } = useSelector((state) => state.auth)
     const handleClick = () => { setShow(!show) }
+    console.log(isverified);
     const handlerSubmit = () => {
         const formData = new FormData()
         formData.append('username', username)
@@ -29,7 +30,7 @@ function SignUp() {
         }
     }
     return (
-        <VStack spacing={3} onSubmit={handlerSubmit}>
+        <VStack spacing={3} >
             <FormControl isRequired color="black">
                 <FormLabel>User name</FormLabel>
                 <Input
@@ -86,7 +87,7 @@ function SignUp() {
                     onChange={(e) => setImage(e.target.files[0])} />
             </FormControl>
             <Button
-
+                onClick={handlerSubmit}
                 colorScheme='blue'
                 width="100%"
                 mt='10px'

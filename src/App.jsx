@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route index element={<Home/>}/>
                  
-          <Route path='/chatPage' element={<ChatePage/>}/>                 
+          <Route path='chatPage' element={<ChatePage/>}/>                 
         </Routes>
         </BrowserRouter>
       </div>

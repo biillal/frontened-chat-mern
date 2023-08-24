@@ -13,7 +13,7 @@ export function registerUser(user){
             console.log(user);
              const {data} = await axios.post("https://backend-chat-7n01.onrender.com/api/v1/auth/signup",user)
              console.log(data,'dada');
-             alert(data.message)
+             console.log(data.message)
              dispatch(authActions.register(data))
              localStorage.setItem('userChat',JSON.stringify(data));
              

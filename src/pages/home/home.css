@@ -1,0 +1,9 @@
+
+
+.home{
+    background-image: url(./assets/bg-chat.webp);
+    background-size: cover;
+    
+    background-repeat: no-repeat;
+    background-position: center;
+}
