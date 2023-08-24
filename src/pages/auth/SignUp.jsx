@@ -2,7 +2,7 @@ import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, V
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../../redux/apiCalls/authApiCalls'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 function SignUp() {
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
@@ -25,11 +25,11 @@ function SignUp() {
         console.log({ username, email, password, passwordConfirm });
         dispatch(registerUser(formData))
         if (isverified === true) {
-            navigate('/chatPage')
+            return navigate('/chatPage')
         }
     }
     return (
-        <VStack spacing={3}>
+        <VStack spacing={3} onSubmit={handlerSubmit}>
             <FormControl isRequired color="black">
                 <FormLabel>User name</FormLabel>
                 <Input
@@ -86,10 +86,11 @@ function SignUp() {
                     onChange={(e) => setImage(e.target.files[0])} />
             </FormControl>
             <Button
+
                 colorScheme='blue'
                 width="100%"
                 mt='10px'
-                onClick={handlerSubmit}
+
             >
                 Sign Up
             </Button>
