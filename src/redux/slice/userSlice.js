@@ -10,7 +10,10 @@ const authSlice = createSlice({
     reducers:{
         login(state,action){
             state.user = action.payload
-        }
+        },
+        register(state,action){
+            state.registerMessage = action.payload
+        },
        
     }
 })

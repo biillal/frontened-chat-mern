@@ -40,7 +40,7 @@ function SignUp() {
                     name='email'
                     type='email'
                     placeholder='Jois@gmail.com'
-                    onChange={(e) => setEmail(e.target.value)} />
+                    onChange={(e) =>setEmail(e.target.value)} />
             </FormControl>
             <FormControl isRequired color="black">
                 <FormLabel>passwored</FormLabel>
@@ -64,7 +64,7 @@ function SignUp() {
                         name='passwordConfirm'
                         type={show ? "text" : "password"}
                         placeholder='********'
-                        onChange={(e) => setEmail(e.target.value)} />
+                        onChange={(e) => setPasswordConfirm(e.target.value)} />
                     <InputRightElement width='4.5rem'>
                         <Button h="1.75rem" size="sm" onClick={handleClick}>
                             {show ? "Hide" : "Show"}

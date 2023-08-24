@@ -14,6 +14,7 @@ export function registerUser(user){
              const {data} = await axios.post("https://backend-chat-7n01.onrender.com/api/v1/auth/signup",user)
              console.log(data,'dada');
              dispatch(authActions.register(data.message))
+             toast.success(data.message)
         } catch (error) {
             console.log(error.response.data.errors[0].msg)
         }
