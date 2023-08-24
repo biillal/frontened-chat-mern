@@ -22,7 +22,7 @@ function SignUp() {
         formData.append('passwordConfirm', passwordConfirm)
         formData.append('image', image)
         console.log({ username, email, password, passwordConfirm });
-        dispatch(registerUser({ username, email, password, passwordConfirm }))
+        dispatch(registerUser(formData))
     }
     return (
         <VStack spacing={3} >
@@ -72,7 +72,7 @@ function SignUp() {
                     </InputRightElement>
                 </InputGroup>
             </FormControl>
-            <FormControl isRequired >
+            <FormControl  >
                 <FormLabel>Upload your picture</FormLabel>
                 <Input
                     name='image'
