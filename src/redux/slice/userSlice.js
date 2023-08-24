@@ -13,10 +13,16 @@ const authSlice = createSlice({
         login(state, action) {
             state.user = action.payload
         },
+        setLoding(state,action){
+           state.loading = true
+        },
+        clearLoading(state,action){
+           state.loading = false
+        },
         register(state, action) {
             state.isverified = true 
             state.user = action.payload
-             
+            state.loading =false
         } 
         
 
