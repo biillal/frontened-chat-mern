@@ -17,7 +17,7 @@ export function registerUser(user){
                 }
             })
              console.log(data,'dada');
-             console.log(data.message)
+             alert(data.message)
              dispatch(authActions.clearLoading())
              dispatch(authActions.register(data))
              localStorage.setItem('userChat',JSON.stringify(data));
