@@ -2,7 +2,9 @@ import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, V
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../../redux/apiCalls/authApiCalls'
+import {useNavigate} from 'react-router-dom'
 function SignUp() {
+    const navigate = useNavigate()
     const [show, setShow] = useState(false)
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -12,9 +14,7 @@ function SignUp() {
     const [phone, setPhone] = useState('')
     const dispatch = useDispatch()
     const { isverified } = useSelector((state) => state.auth)
-    const navigate = useNavigate()
     const handleClick = () => { setShow(!show) }
-    console.log(isverified);
     const handlerSubmit = () => {
         const formData = new FormData()
         formData.append('username', username)
