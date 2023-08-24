@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../../redux/apiCalls/authApiCalls'
 import { useNavigate } from 'react-router-dom'
+import { RotatingLines } from 'react-loader-spinner';
 function SignUp() {
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
@@ -13,7 +14,7 @@ function SignUp() {
     const [image, setImage] = useState(null)
     const [phone, setPhone] = useState('')
     const dispatch = useDispatch()
-    const { isverified } = useSelector((state) => state.auth)
+    const { isverified ,loading} = useSelector((state) => state.auth)
     const handleClick = () => { setShow(!show) }
     console.log(isverified);
     const handlerSubmit = () => {
@@ -93,7 +94,15 @@ function SignUp() {
                 mt='10px'
 
             >
-                Sign Up
+                {
+                    loading ? <RotatingLines
+                        strokeColor="white"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="40"
+                        visible={true}
+                    /> : "Sign Up"
+                    }
             </Button>
         </VStack>
     )

@@ -1,26 +1,28 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
-    name:"auth",
-    initialState:{
-        user:localStorage.getItem("userChat") ? JSON.parse(localStorage.getItem("userChat")) : null,
-        registerMessage:null,
-        isverified:false,
-        isEmailVerified:false
+    name: "auth",
+    initialState: {
+        user: localStorage.getItem("userChat") ? JSON.parse(localStorage.getItem("userChat")) : null,
+        registerMessage: null,
+        isverified: false,
+        loading: false,
+        isEmailVerified: false
     },
-    reducers:{
-        login(state,action){
+    reducers: {
+        login(state, action) {
             state.user = action.payload
         },
-        register(state,action){
+        register(state, action) {
             state.user = action.payload
-            state.isverified = true
-        },createSlice
-       
+            state.isverified = true  
+        } 
+        
+
     }
 })
 
 const authReducer = authSlice.reducer;
 const authActions = authSlice.actions;
 
-export {authReducer,authActions}
+export { authReducer, authActions }
