@@ -44,9 +44,9 @@ export function loginUser(user) {
 }
 
 //logout user
-export function logoutUser(){
-    return async (dispatch,getState) =>{
+export function logoutUser() {
+    return async (dispatch, getState) => {
         dispatch(authActions.logout())
         localStorage.removeItem("userChat")
-    } 
+    }
 }
