@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route index element={user ? <ChatePage/> : <Home/>}/>
                  
-          <Route path='chatPage' element={user ? <ChatePage/> : <Home/>}/>                 
+          <Route path='/chatPage' element={user ? <ChatePage/> : <Home/>}/>                 
         </Routes>
         </BrowserRouter>
       </div>
