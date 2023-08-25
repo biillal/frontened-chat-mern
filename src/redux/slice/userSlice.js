@@ -25,7 +25,10 @@ const authSlice = createSlice({
             state.isverified = true 
             state.user = action.payload
             state.loading =false
-        } 
+        },
+        logout(state,action){
+            state.user = null
+        },
         
 
     }
