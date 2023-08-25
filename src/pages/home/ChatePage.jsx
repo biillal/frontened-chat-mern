@@ -9,7 +9,7 @@ function ChatePage() {
   return (
     <div className='bg-white w-[100%] text-center'>
       Welcome {user?.user?.username}
-      <h2 className='' onClick={()=>dispatch(logoutUser())}>Logout</h2>
+      <h1 className='cursor-pointer text-red-500' onClick={()=>dispatch(logoutUser())}>Logout</h1>
     </div>
   )
 }
