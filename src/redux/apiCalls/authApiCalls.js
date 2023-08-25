@@ -7,24 +7,38 @@ import { authActions } from '../slice/userSlice';
 
 
 //register user
-export function registerUser(user){
-    return async (dispatch,getState) =>{
+export function registerUser(user) {
+    return async (dispatch, getState) => {
         try {
             dispatch(authActions.setLoding())
-             const {data} = await axios.post("https://backend-chat-7n01.onrender.com/api/v1/auth/signup",user)
-             console.log(data,'dada');
-             alert(data.message)
-             dispatch(authActions.clearLoading())
-             dispatch(authActions.register(data))
-             localStorage.setItem('userChat',JSON.stringify(data));
-             
-             
+            const { data } = await axios.post("https://backend-chat-7n01.onrender.com/api/v1/auth/signup", user)
+            alert(data.message)
+            dispatch(authActions.clearLoading())
+            dispatch(authActions.register(data))
+            localStorage.setItem('userChat', JSON.stringify(data));
+
+
         } catch (error) {
             alert(error.response.data.errors[0].msg)
             dispatch(authActions.clearLoading())
         }
-    } 
+    }
 }
 
 
-                            
+
+export function loginUser(user) {
+    return async (dispatch, getState) => {
+        try {
+            dispatch(authActions.setLoding())
+            const { data } = await axios.post("https://backend-chat-7n01.onrender.com/api/v1/auth/login", user)
+            alert(data.message)
+            dispatch(authActions.clearLoading())
+            dispatch(authActions.login(data))
+            localStorage.setItem('userChat', JSON.stringify(data));
+        } catch (error) {
+            console.log(error.response.data.errors)
+            dispatch(authActions.clearLoading())
+        }
+    }
+}

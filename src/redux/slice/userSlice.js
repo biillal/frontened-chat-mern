@@ -10,8 +10,10 @@ const authSlice = createSlice({
         isEmailVerified: false
     },
     reducers: {
-        login(state, action) {
+        login(state,action){
+            state.isverified = true 
             state.user = action.payload
+            state.loading =false
         },
         setLoding(state,action){
            state.loading = true

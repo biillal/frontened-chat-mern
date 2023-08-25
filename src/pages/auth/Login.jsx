@@ -1,15 +1,27 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { loginUser } from '../../redux/apiCalls/authApiCalls'
+import { RotatingLines } from 'react-loader-spinner'
 
 function Login() {
   const [show, setShow] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  const dispatch = useDispatch()
+  const { isverified, loading } = useSelector((state) => state.auth)
+  const navigate = useNavigate()
   const handleClick = () => { setShow(!show) }
-  const handlerSubmit = () => { }
+  const handlerSubmit = () => {
+    dispatch(loginUser({ email, password }))
+  }
+  if (isverified === true) {
+    console.log(isverified);
+    return navigate('/chatPage')
+  }
   return (
-    <VStack spacing={4} onSubmit={handlerSubmit}>
+    <VStack spacing={4} >
 
       <FormControl isRequired color="black">
         <FormLabel>Email</FormLabel>
@@ -33,12 +45,21 @@ function Login() {
         </InputGroup>
       </FormControl>
       <Button
+        onClick={handlerSubmit}
         colorScheme='blue'
         width="100%"
         mt='10px'
 
       >
-        Login
+        {
+          loading ? <RotatingLines
+            strokeColor="white"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="40"
+            visible={true}
+          /> : "Login"
+        }
       </Button>
       <Button
         colorScheme='white'
