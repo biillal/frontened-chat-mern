@@ -37,7 +37,7 @@ export function loginUser(user) {
             dispatch(authActions.login(data))
             localStorage.setItem('userChat', JSON.stringify(data));
         } catch (error) {
-            console.log(error.response.data.errors)
+            alert(error.response.data.message)
             dispatch(authActions.clearLoading())
         }
     }
