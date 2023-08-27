@@ -7,7 +7,7 @@ import { authActions } from '../slice/userSlice';
 
 
 //register user
-export function registerUser(user) {
+export function registerUser(user,toast) {
     return async (dispatch, getState) => {
         try {
             dispatch(authActions.setLoding())

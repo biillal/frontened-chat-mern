@@ -3,9 +3,9 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import './App.css'
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom'
 import Home from './pages/home/Home'
-import ChatePage from './pages/home/ChatePage'
 import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux'
+import ChatePage from './pages/chats/ChatePage'
 function App() {
   const {user} = useSelector((state)=>state.auth)
   return (

@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
+import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -12,9 +12,10 @@ function Login() {
   const dispatch = useDispatch()
   const { isverified, loading } = useSelector((state) => state.auth)
   const navigate = useNavigate()
+  const toast = useToast()
   const handleClick = () => { setShow(!show) }
   const handlerSubmit = () => {
-    dispatch(loginUser({ email, password }))
+    dispatch(loginUser({ email, password },toast))
   }
   if (isverified === true) {
     console.log(isverified);
