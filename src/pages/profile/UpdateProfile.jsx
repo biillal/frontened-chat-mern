@@ -27,7 +27,7 @@ function UpdateProfile() {
                 <img src={file ? URL.createObjectURL(file) : profileUser?.image.url} alt='profile user' className='h-[180px] w-[180px] rounded-full ' />
                 {
                     (
-                        <form className='w-[240px]  absolute top-36 left-[465px] ' onSubmit={formFileSubmitHandler} >
+                        <form className='w-[240px]  absolute top-36 md:left-[465px] left-[235px] ' onSubmit={formFileSubmitHandler} >
                             <abbr title='update image'>
                                 <label htmlFor='file' className='border-none pt-0 pl-3 pr-3 font-bold text-black'>
                                     <i class="ri-camera-fill bg-black text-white p-2 rounded-full"></i>
