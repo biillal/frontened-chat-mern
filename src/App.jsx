@@ -6,6 +6,7 @@ import Home from './pages/home/Home'
 import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux'
 import ChatePage from './pages/chats/ChatePage'
+import Profile from './pages/profile/Profile'
 function App() {
   const {user} = useSelector((state)=>state.auth)
   return (
@@ -15,7 +16,7 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path='/' element={!user ? <Home/> : <Navigate to="/chatPage"/>}/>
-                 
+          <Route path='/profile/:id' element={<Profile/>}/>
           <Route path='chatPage' element={user ? <ChatePage/> : <Navigate to="/"/>}/>                 
         </Routes>
         </BrowserRouter>
