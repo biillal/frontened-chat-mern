@@ -46,7 +46,7 @@ function UpdateProfile() {
                 }
             </div>
             <div className='container mx-auto md:pl-[60px] pl-[30px] mt-14 flex flex-col gap-6'>
-                <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Name</span>:  {user.user.username} </Text>
+                <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Namee</span>:  {user.user.username} </Text>
                 <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Email</span>:  {user.user.email} </Text>
             </div>
         </div>
