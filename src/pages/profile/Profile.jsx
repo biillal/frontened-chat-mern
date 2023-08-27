@@ -4,10 +4,10 @@ import { Box } from '@chakra-ui/react'
 import LeftDrawer from './LeftDrawer'
 import RightDrawer from './RightDrawer'
 import ProfileDetails from './ProfileDetails'
-import UpdateProfile from './updateProfile'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../../redux/apiCalls/profileApiCalls'
 import { useParams } from 'react-router-dom'
+import Update from './Update'
 
 function Profile() {
   const [aboutFilter, setAboutFilter] = useState("profileDetails")
@@ -24,7 +24,7 @@ function Profile() {
           aboutFilter === "profileDetails" && <ProfileDetails  />
         }
         {
-          aboutFilter === "updateProfile" && <UpdateProfile  />
+          aboutFilter === "updateProfile" && <Update  />
         }
       </div>
     </div>
