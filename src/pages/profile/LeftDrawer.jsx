@@ -6,11 +6,8 @@ function LeftDrawer({aboutFilter,setAboutFilter}) {
   const { user } = useSelector((state) => state.auth)
   return (
     <>
-      <Box
-        bg='white'
-        height='85.8vh'
-        width='30%'
-        borderRadius="10px"
+      <div
+      className='bg-white h-[85.8vh] w-[90%] md:w-[30%] rounded-md '
       > 
         <Text className='text-center mt-10 text-xl font-body  font-bold'>welcome {user.user.username} </Text>
         <div className='w-[100%] pl-[10px] pr-[10px] h-[90%]'>
@@ -20,7 +17,7 @@ function LeftDrawer({aboutFilter,setAboutFilter}) {
           <Button className={`w-[100%] mt-11 ${aboutFilter === "address" ? "bg-blue-300" : ""}`} bg='blue.500' as='button' onClick={() => setAboutFilter("address")}>added Address</Button>
           <Button className={`w-[100%] mt-11 `} bg='red.500' color='white' as='button'>Logout</Button>
         </div>
-      </Box>
+      </div>
     </>
   )
 }

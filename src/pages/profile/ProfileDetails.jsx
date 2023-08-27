@@ -7,15 +7,13 @@ function ProfileDetails() {
 
     return (
         <>
-            <Box
-                bg='white'
-                height='85.8vh'
-                width='66%'
-                borderRadius="10px"
+            <div
+                className='bg-white h-[85.8vh] w-[90%] md:w-[66%] rounded-md '
             >
                 <div className='w-[100%] flex items-center justify-center'>
                     <Avatar
-                        size=''
+                        size='2xl'
+                        className='md'
                         name='Prosper Otemuyiwa'
                         src={user.user.image}
                     />
@@ -24,7 +22,7 @@ function ProfileDetails() {
                     <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Name</span>:  {user.user.username} </Text>
                     <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Email</span>:  {user.user.email} </Text>
                 </div>
-            </Box>
+            </div>
 
         </>
     )

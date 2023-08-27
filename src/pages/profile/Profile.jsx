@@ -10,17 +10,15 @@ function Profile() {
   return (
     <div className='w-[100%]'>
       <SideDrawer />
-      <Box
-        display='flex'
-        justifyContent="space-between"
-        alignItems="center"
-        padding='10px 25px 10px 25px'
+      <div
+      className='flex flex-col w-[100%] flex-wrap gap-y-4 md:flex-row justify-between items-center pt-[10px] pb-[10px] pl-[25px] pr-[25px] '
+ 
       >
         <LeftDrawer aboutFilter={aboutFilter} setAboutFilter={setAboutFilter} />
         {
           aboutFilter === "profileDetails" && <ProfileDetails />
         }
-      </Box>
+      </div>
     </div>
   )
 }
