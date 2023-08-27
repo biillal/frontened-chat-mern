@@ -36,7 +36,7 @@ function SideDrawer() {
                     </Menu>
                     <Menu>
                         <MenuButton as={Button} rightIcon={<CheckCircleIcon />} name={user.user.username}>
-                            <Avatar size='sm' cursor='pointer' name={user.user.usename} src={user.user.image} />
+                            <Avatar size='sm' cursor='pointer' name={user.user.usename} src={user.user.image.url} />
                         </MenuButton>
                         <MenuList>
                             <Link to={`/profile/${user.user._id}`}><MenuItem>My Profile</MenuItem></Link>

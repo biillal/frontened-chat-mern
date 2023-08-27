@@ -10,26 +10,29 @@ const authSlice = createSlice({
         isEmailVerified: false
     },
     reducers: {
-        login(state,action){
-            state.isverified = true 
+        login(state, action) {
+            state.isverified = true
             state.user = action.payload
-            state.loading =false
+            state.loading = false
         },
-        setLoding(state,action){
-           state.loading = true
+        setLoding(state, action) {
+            state.loading = true
         },
-        clearLoading(state,action){
-           state.loading = false
+        clearLoading(state, action) {
+            state.loading = false
         },
         register(state, action) {
-            state.isverified = true 
+            state.isverified = true
             state.user = action.payload
-            state.loading =false
+            state.loading = false
         },
-        logout(state,action){
+        logout(state, action) {
             state.user = null
         },
-        
+
+        setPhoto(state, action) {
+            state.user.user.image = action.payload
+        },
 
     }
 })

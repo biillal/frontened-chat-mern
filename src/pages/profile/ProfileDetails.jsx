@@ -1,9 +1,17 @@
 import { Avatar, Box, Text } from '@chakra-ui/react'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { getProfile } from '../../redux/apiCalls/profileApiCalls'
 
 function ProfileDetails() {
-    const { user } = useSelector((state) => state.auth)
+    const {id} = useParams()
+    const {profileUser} = useSelector((state)=>state.profile)
+    const dispatch = useDispatch()
+    console.log(profileUser);
+    useEffect(()=>{  
+      dispatch(getProfile(id))
+    },[])
 
     return (
         <>
@@ -15,12 +23,12 @@ function ProfileDetails() {
                         size='2xl'
                         className='md'
                         name='Prosper Otemuyiwa'
-                        src={user.user.image}
-                    />
+                        src={profileUser?.image?.url}
+                     />
                 </div>
                 <div className='container mx-auto md:pl-[60px] pl-[30px] mt-14 flex flex-col gap-6'>
-                    <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Name</span>:  {user.user.username} </Text>
-                    <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Email</span>:  {user.user.email} </Text>
+                    <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Name</span>: {profileUser?.username} </Text>
+                    <Text className='font-body font-bold text-gray-400 text-xl'><span className='text-black'>Email</span>: {profileUser?.email} </Text>
                 </div>
             </div>
 
