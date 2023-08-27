@@ -7,7 +7,7 @@ function LeftDrawer({aboutFilter,setAboutFilter}) {
   return (
     <>
       <div
-      className='bg-white h-[85.8vh] w-[90%] md:w-[30%] rounded-md '
+      className='bg-white h-[85.8vh] w-[95%] md:w-[30%] rounded-md '
       > 
         <Text className='text-center mt-10 text-xl font-body  font-bold'>welcome {user.user.username} </Text>
         <div className='w-[100%] pl-[10px] pr-[10px] h-[90%]'>
