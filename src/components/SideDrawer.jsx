@@ -1,16 +1,40 @@
-import { Avatar, Box, Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Text, Tooltip, useDisclosure } from '@chakra-ui/react'
+import { Avatar, Box, Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Text, Tooltip, useDisclosure, useToast } from '@chakra-ui/react'
 import { BellIcon, CheckCircleIcon } from '@chakra-ui/icons'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { logoutUser } from '../redux/apiCalls/authApiCalls'
+import { searchUser } from '../redux/apiCalls/profileApiCalls'
+import ChatLoading from './ChatLoading'
+import UserListItem from './UserListItem'
 function SideDrawer() {
+    const {resultSearch,loaginSearchUser} = useSelector((state)=>state.profile)
+    const [search, setSearch] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const logoutuser = () => {
         dispatch(logoutUser())
         navigate('/')
+    }
+    console.log(loaginSearchUser);
+    console.log(resultSearch);
+    const toast = useToast()
+    const handlerSearch = (e) => {
+        if (!search) {
+            toast({
+                title: "Please Enter something in search",
+                status: "warning",
+                duration: 5000,
+                isClosable: true,
+                position: "top-left"
+            });
+            return;
+        }
+        dispatch(searchUser(search))
+    }
+    const accessChat = (userId)=>{
+        console.log("heeelooo");
     }
     const { user } = useSelector((state) => state.auth)
     return (
@@ -50,10 +74,28 @@ function SideDrawer() {
                 <DrawerOverlay />
                 <DrawerContent>
                     <DrawerHeader borderBottomWidth='1px'>Search Users</DrawerHeader>
+                    <DrawerBody>
+                        <Box display='flex' pb={2}>
+                            <Input placeholder='Search by username or email' mr={2} value={search} onChange={(e) => setSearch(e.target.value)} />
+                            <Button onClick={handlerSearch}>Go</Button>
+                        </Box>
+                        {
+                            loaginSearchUser ? <ChatLoading/> :(
+                                <>
+                                  {resultSearch.map((user)=>{
+                                    return (
+                                        <UserListItem 
+                                           key={user._id}
+                                           user={user}
+                                           handleFunction={()=>accessChat(user._id)}
+                                        />
+                                    )
+                                  })}
+                                </>
+                            )
+                        }
+                    </DrawerBody>
                 </DrawerContent>
-                <DrawerBody>
-                    <Input placeholder='Search by name or email' size='xs' />
-                </DrawerBody>
             </Drawer>
         </>
     )
