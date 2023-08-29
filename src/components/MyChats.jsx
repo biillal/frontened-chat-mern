@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchChats } from '../redux/apiCalls/chatApiCalls'
-import { Box, Button } from '@chakra-ui/react'
+import { fetchChat } from '../redux/apiCalls/chatApiCalls'
+import { Box, Button, Stack, Text } from '@chakra-ui/react'
 import {AddIcon} from '@chakra-ui/icons'
+import ChatLoading from './ChatLoading'
+import { getSender } from '../config/ChatLogics'
 function MyChats() {
+  const [selectedChat,setSelectedChat] = useState('')
   const {accessChat} = useSelector((state)=>state.chat)
+  const {fetchChats} = useSelector((state)=>state.chat)
+  const {user} = useSelector((state)=>state.auth)
   const dispatch = useDispatch()
   useEffect(()=>{
-    dispatch(fetchChats())
+    dispatch(fetchChat())
   },[])
   return (
     <Box
@@ -38,6 +43,48 @@ function MyChats() {
         >
           New Group Chat
         </Button>
+      </Box>
+      <Box
+        display="flex"
+        flexDir='column'
+        p={3}
+        bg='#F8F8F8'
+        width="100%"
+        h="75vh"
+        borderRadius="lg"
+        overflowY="hidden"
+      >
+        {
+          fetchChats ? (
+            <Stack overflowY="scroll">
+              {
+                fetchChats.map((chat)=>{
+                  return(
+                    <Box
+                      onClick={()=>setSelectedChat(chat)}
+                      cursor="pointer"
+                      bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
+                      color={selectedChat === chat ? "white" :"black"}
+                      px={3}
+                      py={2}
+                      borderRadius='lg'
+                      key={chat._id}
+                    >
+                      <Text>
+                        {!chat.isGroupChat ? (
+                          getSender(user,chat.users)
+                        ) : (chat.chatName)}
+                      </Text>
+                    </Box>
+                  )
+                })
+              }
+            </Stack>
+
+         ): (
+            <ChatLoading/>
+          )
+        }
       </Box>
     </Box>
   ) 

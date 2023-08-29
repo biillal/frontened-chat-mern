@@ -59,7 +59,7 @@ export function updateProfile(userId, profile) {
     }
 }
 
-export function fetchChats(user) {
+export function fetchChat(user) {
     return async (dispatch, getState) => {
         try {
             dispatch(chatActions.setLoading())

@@ -51,7 +51,7 @@ function Update() {
                 }
             </div>
             <form className='container mx-auto md:pl-[60px] pl-[30px] mt-14 flex flex-col gap-6' onSubmit={formhandlerSubmit}>
-                <Input defaultValue={profileUser.username} onChange={(e)=>setUsername(e.target.value)} />
+                <Input value={profileUser.username} onChange={(e)=>setUsername(e.target.value)} />
                 <Button type='submit'>Update</Button>
             </form>
         </div>

@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Text, Tooltip, useDisclosure, useToast } from '@chakra-ui/react'
-import { BellIcon, CheckCircleIcon } from '@chakra-ui/icons'
+import { BellIcon, CheckCircleIcon, SpinnerIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
@@ -9,7 +9,9 @@ import ChatLoading from './ChatLoading'
 import UserListItem from './UserListItem'
 import { accessChatId } from '../redux/apiCalls/chatApiCalls'
 function SideDrawer() {
-    const {resultSearch,loaginSearchUser} = useSelector((state)=>state.profile)
+    const { resultSearch, loaginSearchUser } = useSelector((state) => state.profile)
+    const { loading } = useSelector((state) => state.chat)
+    console.log(loading);
     const [search, setSearch] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate()
@@ -34,8 +36,8 @@ function SideDrawer() {
         }
         dispatch(searchUser(search))
     }
-    const accessChat = (userId)=>{
-        dispatch(accessChatId({userId}))
+    const accessChat = (userId) => {
+        dispatch(accessChatId({ userId }))
     }
     const { user } = useSelector((state) => state.auth)
     return (
@@ -81,20 +83,24 @@ function SideDrawer() {
                             <Button onClick={handlerSearch}>Go</Button>
                         </Box>
                         {
-                            loaginSearchUser ? <ChatLoading/> :(
+                            loaginSearchUser ? <ChatLoading /> : (
                                 <>
-                                  {resultSearch.map((user)=>{
-                                    return (
-                                        <UserListItem 
-                                           key={user._id}
-                                           user={user}
-                                           handleFunction={()=>accessChat(user._id)}
-                                        />
-                                    )
-                                  })}
+                                    {resultSearch.map((user) => {
+                                        return (
+                                            <UserListItem
+                                                key={user._id}
+                                                user={user}
+                                                handleFunction={() => accessChat(user._id)}
+                                            />
+                                        )
+                                    })}
+
                                 </>
                             )
                         }
+                        {loading && <SpinnerIcon mt="auto" display="flex" />}
+
+
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
