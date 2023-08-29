@@ -16,7 +16,7 @@ function MyChats() {
   },[])
   return (
     <Box
-      display={{base:accessChat ? "none" : "flex" , md:"flex"}}
+      display={{base:selectedChat ? "none" : "flex" , md:"flex"}}
       flexDir="column"
       alignItems="center"
       p={3}
