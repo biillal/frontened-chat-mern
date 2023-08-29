@@ -34,7 +34,7 @@ export function uploadPhoto(newPhot) {
             localStorage.setItem("userChat", JSON.stringify(user))
         } catch (error) {
             console.log(getState().auth.user.token)
-            alert(error.response.data.message)
+            alert(error)
         }
     }
 }
