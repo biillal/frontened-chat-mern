@@ -9,7 +9,7 @@ function ChatePage() {
   return (
     <div className='w-[100%] '>
       {user && <SideDrawer />}
-      <div className='flex justify-between p-[10px] '>
+      <div className='flex justify-between p-[10px] w-[100%] '>
           {user && <MyChats />}
           {user && <ChatBox />}
       </div>

@@ -7,6 +7,7 @@ import { logoutUser } from '../redux/apiCalls/authApiCalls'
 import { searchUser } from '../redux/apiCalls/profileApiCalls'
 import ChatLoading from './ChatLoading'
 import UserListItem from './UserListItem'
+import { accessChatId } from '../redux/apiCalls/chatApiCalls'
 function SideDrawer() {
     const {resultSearch,loaginSearchUser} = useSelector((state)=>state.profile)
     const [search, setSearch] = useState("")
@@ -34,7 +35,7 @@ function SideDrawer() {
         dispatch(searchUser(search))
     }
     const accessChat = (userId)=>{
-        console.log("heeelooo");
+        dispatch(accessChatId({userId}))
     }
     const { user } = useSelector((state) => state.auth)
     return (
